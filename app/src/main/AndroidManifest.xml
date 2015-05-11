@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.synergy.activeandroidtest" >
+
+    <application
+        android:name="com.activeandroid.app.Application"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".ui.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="AA_DB_NAME"
+            android:value="repository.db" />
+        <meta-data
+            android:name="AA_DB_VERSION"
+            android:value="1" />
+        <meta-data
+            android:name="AA_MODELS"
+            android:value="com.synergy.activeandroidtest.data.Item, com.synergy.activeandroidtest.data.Category" />
+
+        <activity
+            android:name=".ui.AddCategoryActivity"
+            android:label="@string/title_activity_add_category"
+            android:parentActivityName=".ui.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.synergy.activeandroidtest.ui.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ui.ListItemCategoryActivity"
+            android:label="@string/title_activity_list_item_category"
+            android:parentActivityName=".ui.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.synergy.activeandroidtest.ui.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ui.AddItemActivity"
+            android:label="@string/title_activity_add_item"
+            android:parentActivityName=".ui.ListItemCategoryActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.synergy.activeandroidtest.ui.ListItemCategoryActivity" />
+        </activity>
+    </application>
+
+</manifest>

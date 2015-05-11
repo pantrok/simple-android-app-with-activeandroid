@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Active Android Test</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_add_category">+</string>
+    <string name="title_activity_add_category">AddCategoryActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="category_title">Categoria</string>
+    <string name="add_button">Agregar</string>
+    <string name="title_activity_list_item_category">ListItemCategoryActivity</string>
+    <string name="title_activity_add_item">AddItemActivity</string>
+    <string name="item_title">Item</string>
+</resources>
