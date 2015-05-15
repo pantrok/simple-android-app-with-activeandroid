@@ -5,6 +5,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,6 +13,16 @@ import android.widget.Toast;
 
 import com.synergy.activeandroidtest.R;
 import com.synergy.activeandroidtest.adapters.CategoryAdapter;
+import com.synergy.activeandroidtest.beans.User;
+import com.synergy.activeandroidtest.services.PartsService;
+import com.synergy.activeandroidtest.utils.ReflectionUtils;
+
+import java.lang.reflect.InvocationTargetException;
+
+import retrofit.Callback;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -44,6 +55,30 @@ public class MainActivity extends ActionBarActivity {
         mAdapter = new CategoryAdapter(MainActivity.this);
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
+        PartsService service = new PartsService();
+        service.loadUserData(1, new Callback<User>() {
+            @Override
+            public void success(User user, Response response) {
+                Log.i("TAG", "" + user);
+                try {
+                    com.synergy.activeandroidtest.data.User userModel = ReflectionUtils.copy(
+                            com.synergy.activeandroidtest.data.User.class, user);
+                    Log.i("TAG","User model -> " + userModel);
+                } catch (InstantiationException e){
+                    Log.e("TAG",e.getMessage());
+                } catch (IllegalAccessException e) {
+                    Log.e("TAG",e.getMessage());
+                } catch (InvocationTargetException e) {
+                    Log.e("TAG",e.getMessage());
+                }
+                Toast.makeText(MainActivity.this,"User loaded",Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Toast.makeText(MainActivity.this,"User not loaded",Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override

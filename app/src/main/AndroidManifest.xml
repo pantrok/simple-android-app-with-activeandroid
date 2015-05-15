@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.synergy.activeandroidtest" >
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name="com.activeandroid.app.Application"
         android:allowBackup="true"
@@ -26,7 +30,7 @@
             android:value="1" />
         <meta-data
             android:name="AA_MODELS"
-            android:value="com.synergy.activeandroidtest.data.Item, com.synergy.activeandroidtest.data.Category" />
+            android:value="com.synergy.activeandroidtest.data.Item, com.synergy.activeandroidtest.data.Category, com.synergy.activeandroidtest.data.User" />
 
         <activity
             android:name=".ui.AddCategoryActivity"
